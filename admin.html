@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="gu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>મા અન્નપૂર્ણા મંદિર — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <a class="logo" href="index.html" aria-label="Open public website"><span>ॐ</span><div><b>અન્નપૂર્ણા CMS</b><small>Temple Digital Office</small></div></a>
+      <nav aria-label="Admin sections">
+        <button data-view="dashboard" class="active">◈ Dashboard</button>
+        <button data-view="content">✦ Page Content & SEO</button>
+        <button data-view="hero">▣ Hero Image</button>
+        <button data-view="announcements">◉ Announcements</button>
+        <button data-view="darshan">◷ Darshan & Aarti</button>
+        <button data-view="events">◇ Events</button>
+        <button data-view="gallery">▧ Gallery & Images</button>
+        <button data-view="media">▶ YouTube & Shorts</button>
+        <button data-view="social">◎ Social Links</button>
+        <button data-view="enquiries">✉ Enquiries</button>
+      </nav>
+      <a href="index.html" class="public-link">↗ Public Website</a>
+    </aside>
+
+    <main>
+      <header>
+        <div><span class="kicker">PRIVATE ADMIN · FULL CONTENT ACCESS</span><h1>મંદિર વેબસાઈટ કંટ્રોલ</h1></div>
+        <div class="header-actions"><span id="userEmail"></span><a class="view-site" href="index.html" target="_blank" rel="noopener">View website ↗</a><button id="logout" class="secondary" type="button">Logout</button></div>
+      </header>
+
+      <section id="loginView" class="login panel">
+        <div class="login-icon">ॐ</div>
+        <h2>Secure Admin Login</h2>
+        <p>તમારા Supabase admin accountથી sign in કરો.</p>
+        <form id="loginForm">
+          <label>Email<input id="email" type="email" autocomplete="email" placeholder="Admin email" required></label>
+          <label>Password<input id="password" type="password" autocomplete="current-password" placeholder="Password" required></label>
+          <button class="primary" type="submit">Login securely →</button>
+          <div id="loginStatus" class="form-status" role="status"></div>
+        </form>
+      </section>
+
+      <section id="appView" hidden>
+        <section id="dashboard" class="view">
+          <div class="welcome"><div><span class="kicker">CONTROL CENTER</span><h2>તમારી વેબસાઈટ હંમેશા તમારા નિયંત્રણમાં</h2><p>Text, images, timings, events, videos, enquiries અને links એક જ professional panelમાંથી publish કરો.</p></div><a href="index.html" target="_blank" rel="noopener" class="primary">Website જુઓ ↗</a></div>
+          <div class="metric-grid"><div><span>Homepage</span><b>LIVE</b><small>Editable content</small></div><div><span>Media</span><b id="mediaCount">—</b><small>Videos + Shorts</small></div><div><span>Gallery</span><b id="galleryCount">—</b><small>Cloud images</small></div><div><span>Enquiries</span><b id="inqCount">—</b><small>Messages</small></div></div>
+          <div class="panel"><div class="view-head"><div><span class="kicker">PUBLISHING MAP</span><h3>What you can edit</h3></div><button class="secondary jump-button" type="button" data-jump="content">Edit homepage copy</button></div><div class="flow"><span>Homepage Copy</span><i>→</i><span>Hero Image</span><i>→</i><span>Darshan</span><i>→</i><span>Events</span><i>→</i><span>Gallery</span><i>→</i><span>Video</span><i>→</i><span>Social</span></div></div>
+        </section>
+
+        <section id="content" class="view" hidden>
+          <div class="panel"><div class="view-head"><div><span class="kicker">HOMEPAGE · COPY · SEO</span><h2>Page Content & Search Details</h2><p>દરેક public sectionનો લખાણ અને homepage title અહીંથી બદલો.</p></div><span class="status-dot">● Auto-publish</span></div><form id="contentForm"><div id="contentFields" class="content-fields"></div><div class="form-actions"><button class="primary" type="submit">Save all homepage content</button><div id="contentStatus" class="form-status" role="status"></div></div></form></div>
+        </section>
+
+        <section id="hero" class="view" hidden>
+          <div class="panel"><div class="view-head"><div><span class="kicker">HOMEPAGE · HERO</span><h2>Hero Image</h2><p>નવી image upload કરો અથવા hosted image URL paste કરો.</p></div><span class="status-dot">● Auto-publish</span></div><form id="heroForm" class="form-grid"><label>Hero image URL<input id="heroImageUrl" type="url" placeholder="https://..."></label><div class="upload-box"><input id="heroFile" type="file" accept="image/png,image/jpeg,image/webp"><span>Upload / replace hero image</span><small>Recommended: landscape JPG or WebP, at least 1920 × 1080 px.</small></div><div class="form-actions"><button class="primary" type="submit">Save hero image</button><div id="heroStatus" class="form-status" role="status"></div></div></form></div>
+        </section>
+
+        <section id="announcements" class="view" hidden>
+          <div class="panel"><div class="view-head"><div><span class="kicker">ANNOUNCEMENTS</span><h2>Top Notice Bar</h2><p>Important notices automatically appear in the scrolling ticker.</p></div></div><form id="annForm" class="form-grid"><input id="annEditId" type="hidden"><label>Title<input id="annTitle" required maxlength="160" placeholder="મહત્વપૂર્ણ જાહેરાત"></label><label>Message<textarea id="annBody" rows="3" maxlength="600" placeholder="જાહેરાતની સંપૂર્ણ માહિતી"></textarea></label><label class="check"><input id="annPublished" type="checkbox" checked> Publish this announcement</label><div class="form-actions"><button class="primary" type="submit">Publish announcement</button><button id="annCancel" class="secondary" type="button" hidden>Cancel edit</button><div id="annStatus" class="form-status" role="status"></div></div></form></div><div class="panel"><h3>Announcements</h3><div id="annList" class="record-list"></div></div>
+        </section>
+
+        <section id="darshan" class="view" hidden>
+          <div class="panel"><div class="view-head"><div><span class="kicker">DAILY DARSHAN</span><h2>Darshan & Aarti Schedule</h2><p>Set the current timings and arrange their display order.</p></div></div><form id="schForm" class="form-grid compact-form"><input id="schEditId" type="hidden"><label>Name<input id="schName" required maxlength="100" placeholder="મંગળા આરતી"></label><label>Time<input id="schTime" required maxlength="60" placeholder="06:00 AM"></label><label>Display order<input id="schOrder" type="number" value="0" min="0"></label><label class="check"><input id="schPublished" type="checkbox" checked> Publish this timing</label><div class="form-actions"><button class="primary" type="submit">Save timing</button><button id="schCancel" class="secondary" type="button" hidden>Cancel edit</button><div id="schStatus" class="form-status" role="status"></div></div></form></div><div class="panel"><h3>Current schedule</h3><div id="schList" class="record-list"></div></div>
+        </section>
+
+        <section id="events" class="view" hidden>
+          <div class="panel"><div class="view-head"><div><span class="kicker">RECENT EVENTS</span><h2>Event Manager</h2><p>Create, edit, unpublish or delete every event card.</p></div></div><form id="eventForm" class="form-grid"><input id="eventEditId" type="hidden"><label>Event title<input id="eventTitle" required maxlength="160"></label><label>Date<input id="eventDate" type="date"></label><label>Date label<input id="eventDateLabel" maxlength="100" placeholder="મંદિર કાર્યક્રમ"></label><label>Description<textarea id="eventDesc" rows="3" maxlength="800"></textarea></label><label>Image URL<input id="eventImage" type="url" placeholder="https://..."></label><label class="check"><input id="eventPublished" type="checkbox" checked> Publish this event</label><div class="form-actions"><button class="primary" type="submit">Save event</button><button id="eventCancel" class="secondary" type="button" hidden>Cancel edit</button><div id="eventStatus" class="form-status" role="status"></div></div></form></div><div class="panel"><h3>Events</h3><div id="eventList" class="record-list"></div></div>
+        </section>
+
+        <section id="gallery" class="view" hidden>
+          <div class="panel"><div class="view-head"><div><span class="kicker">MEDIA LIBRARY</span><h2>Gallery & Images</h2><p>Upload temple images or edit their captions and categories.</p></div></div><form id="galleryForm" class="form-grid"><input id="galleryEditId" type="hidden"><label>Caption<input id="galleryCaption" maxlength="160" placeholder="મા અન્નપૂર્ણા"></label><label>Category<select id="galleryCategory"><option>Temple</option><option>Darshan</option><option>Festival</option><option>Seva</option><option>Gallery</option></select></label><label class="check"><input id="galleryPublished" type="checkbox" checked> Publish selected images</label><div class="upload-box large"><input id="galleryFile" type="file" accept="image/png,image/jpeg,image/webp" multiple><span>+ Upload one or more images</span><small>JPG, PNG or WebP · temple-gallery storage</small></div><div class="form-actions"><button class="primary" type="submit">Upload & publish</button><button id="galleryCancel" class="secondary" type="button" hidden>Cancel edit</button><div id="galleryStatus" class="form-status" role="status"></div></div></form></div><div class="panel"><h3>Published gallery</h3><div id="galleryGrid" class="gallery-admin"></div></div>
+        </section>
+
+        <section id="media" class="view" hidden>
+          <div class="panel"><div class="view-head"><div><span class="kicker">VIDEO CMS</span><h2>YouTube · Live · Shorts</h2><p>Add the original YouTube link; the site embeds it automatically.</p></div><a class="secondary linkbtn" href="https://www.youtube.com/@annapoorna_maa/featured" target="_blank" rel="noopener">Open Channel ↗</a></div><form id="ytForm" class="form-grid"><input id="ytEditId" type="hidden"><label>YouTube URL<input id="ytUrl" required type="url" placeholder="Watch / Live / Shorts URL"></label><label>Title<input id="ytTitle" maxlength="160" placeholder="Video title"></label><label>Type<select id="ytKind"><option value="live">Live Darshan</option><option value="video">Video</option><option value="short">YouTube Short</option></select></label><label class="check"><input id="ytFeatured" type="checkbox"> Featured on homepage</label><label class="check"><input id="ytPublished" type="checkbox" checked> Publish this media</label><div class="form-actions"><button class="primary" type="submit">Save media</button><button id="ytCancel" class="secondary" type="button" hidden>Cancel edit</button><div id="ytStatus" class="form-status" role="status"></div></div></form></div><div class="panel"><h3>Published media</h3><div id="ytList" class="record-list"></div></div>
+        </section>
+
+        <section id="social" class="view" hidden>
+          <div class="panel"><div class="view-head"><div><span class="kicker">SOCIAL</span><h2>YouTube & Instagram</h2><p>Update the public social links used across the homepage.</p></div></div><form id="socialForm" class="form-grid"><label>YouTube channel<input id="youtubeUrl" type="url" placeholder="https://youtube.com/@..."></label><label>Instagram URL<input id="instagramUrl" type="url" placeholder="https://instagram.com/..."></label><div class="form-actions"><button class="primary" type="submit">Save social links</button><div id="socialStatus" class="form-status" role="status"></div></div></form></div>
+        </section>
+
+        <section id="enquiries" class="view" hidden>
+          <div class="panel"><div class="view-head"><div><span class="kicker">INBOX</span><h2>Enquiries</h2><p>Messages submitted by devotees from the public website.</p></div></div><div id="enquiryList" class="enquiry-list"></div></div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

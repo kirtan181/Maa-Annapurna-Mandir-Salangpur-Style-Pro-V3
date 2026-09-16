@@ -1,0 +1,10 @@
+NEXT STEP
+
+1. Open app.js and admin.js.
+2. Replace YOUR_SUPABASE_URL with your Supabase Project URL.
+3. Replace YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY with your publishable/anon key.
+4. Keep the service-role/secret key private.
+5. Upload the site to GoDaddy hosting/static hosting.
+6. Open admin.html separately to test login.
+
+The public YouTube button always points to the temple's public YouTube channel and does not point to admin.
